@@ -19,10 +19,10 @@ window.NodeActions = [
 	function(t){return getInput1(t) - getInput2(t)},
 	function(t){return getInput1(t) * getInput2(t)},
 	function(t){return getInput2(t)!=0?(getInput1(t) / getInput2(t)) :0},
-	function(t){return getInput1(t) ^ getInput2(t)},
+	function(t){return getInput1(t) ** getInput2(t)},
 	function(t){return getInput1(t) % getInput2(t)},
 	function(t){
-		var m = 10^getInput2(t);
+		var m = 10**getInput2(t);
 		return Math.round(getInput1(t) * m) / m;
 	},
 	function(t){return getInput1(t)>=0.5? 1 :0},
@@ -68,17 +68,6 @@ window.Node = class {
 		ctx.fillStyle("#ff0000",() => {
 			ctx.drawCircle(this.x - cx, this.y - cy, 32);
 			ctx.fill();
-		});
-	}
-
-	update() {
-		if(this.type != NodeTypes.CONST) this.output = NodeActions[this.type](this);
-	}
-
-	static iteration() {
-		Node.list.forEach((node) => {
-			node.update();
-			//NodePhysics.calculate(node);
 		});
 	}
 

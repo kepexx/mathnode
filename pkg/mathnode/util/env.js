@@ -7,11 +7,18 @@ window.Env = {
 	mouseDown: [],
 	mousePressed: [],
 	update: () => {
-		keyPressed = [];
-		mousePressed = [];
+		Env.keyPressed = [];
+		Env.mousePressed = [];
 	}
 };
 document.onmousemove = handleMouseMove;
+document.onmousedown = (e) => {
+	Env.mouseDown[e.button] = true;
+	Env.mousePressed[e.button] = true;
+}
+document.onmouseup = (e) => {
+	Env.mouseDown[e.button] = false;
+}
 document.onkeydown = (e) => {
 	keyDown[e.key] = true;
 	keyPressed[e.key] = true;
